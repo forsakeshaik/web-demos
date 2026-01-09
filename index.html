@@ -3,300 +3,1404 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Roofing | Roof Repair & Replacement</title>
+<title>Elite Roofing | Premium Roof Solutions Since 2004</title>
 
 <style>
 :root {
-  --primary:#0b5ed7;
-  --accent:#ff6b35;
-  --dark:#1a2332;
-  --light:#f8f9fa;
-  --text:#222;
-  --muted:#666;
-  --border:#e5e5e5;
+  --primary:#0f172a;
+  --primary-light:#1e293b;
+  --accent:#f59e0b;
+  --accent-dark:#d97706;
+  --dark:#020617;
+  --light:#f8fafc;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --success:#10b981;
+  --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow:0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  --shadow-xl:0 25px 50px -12px rgba(0,0,0,0.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   color:var(--text);
-  line-height:1.75;
+  line-height:1.7;
   background:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
 }
-
-img{background:linear-gradient(135deg,#f2f2f2,#e6e6e6)}
 
 /* NAV */
 nav{
-  background:var(--dark);
+  background:rgba(15,23,42,0.95);
+  backdrop-filter:blur(12px);
   position:sticky;
   top:0;
   z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  box-shadow:var(--shadow);
 }
 
 .nav-wrap{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
-  padding:0 24px;
-  height:72px;
+  padding:0 32px;
+  height:80px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
 .logo{
-  font-size:28px;
+  font-size:26px;
   font-weight:800;
-  color:#00d4ff;
+  color:var(--accent);
   text-decoration:none;
-  letter-spacing:-0.5px;
+  letter-spacing:-0.8px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+  z-index:1001;
+  position:relative;
+}
+
+.logo:hover{
+  color:#fbbf24;
+}
+
+.logo::before{
+  content:"🏠";
+  font-size:32px;
+  filter:drop-shadow(0 4px 8px rgba(245,158,11,0.3));
 }
 
 .nav-links{
   list-style:none;
   display:flex;
-  gap:32px;
+  gap:40px;
+  align-items:center;
 }
 
 .nav-links a{
-  color:white;
+  color:rgba(255,255,255,0.9);
   text-decoration:none;
-  font-weight:500;
+  font-weight:600;
+  font-size:15px;
   position:relative;
+  transition:.3s;
+  letter-spacing:0.3px;
 }
 
 .nav-links a::after{
   content:"";
   position:absolute;
-  bottom:-6px;
+  bottom:-8px;
   left:0;
   width:0;
-  height:2px;
-  background:#00d4ff;
+  height:3px;
+  background:var(--accent);
   transition:.3s;
+  border-radius:2px;
+}
+
+.nav-links a:hover{
+  color:#fff;
 }
 
 .nav-links a:hover::after{width:100%}
 
+.nav-cta{
+  background:var(--accent);
+  color:var(--dark);
+  padding:12px 24px;
+  border-radius:8px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.nav-cta:hover{
+  background:var(--accent-dark);
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(245,158,11,0.3);
+}
+
+.nav-cta::after{display:none}
+
+/* HAMBURGER MENU */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1001;
+  background:none;
+  border:none;
+  padding:12px;
+  position:relative;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:2px;
+  transition:.3s;
+}
+
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(7px, -7px);
+}
+
 /* HERO */
 .hero{
   background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-    url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1800&q=80");
+    linear-gradient(135deg, rgba(15,23,42,0.92), rgba(30,41,59,0.88)),
+    url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=2400&q=90");
   background-size:cover;
   background-position:center;
   color:white;
-  text-align:center;
-  padding:110px 20px;
+  padding:140px 32px 120px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:radial-gradient(circle at 20% 50%, rgba(245,158,11,0.15), transparent 50%);
+  pointer-events:none;
+}
+
+.hero-content{
+  max-width:1280px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(245,158,11,0.15);
+  border:1px solid rgba(245,158,11,0.3);
+  padding:8px 20px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:24px;
+  backdrop-filter:blur(8px);
 }
 
 .hero h1{
-  font-size:56px;
-  letter-spacing:-0.6px;
-  margin-bottom:18px;
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:-1.5px;
+  margin-bottom:24px;
+  line-height:1.1;
+  max-width:800px;
+}
+
+.hero h1 span{
+  color:var(--accent);
+  position:relative;
+  display:inline-block;
 }
 
 .hero p{
-  font-size:19px;
-  max-width:720px;
-  margin:0 auto 34px;
+  font-size:21px;
+  max-width:680px;
+  margin-bottom:40px;
   opacity:.95;
+  line-height:1.6;
+  color:rgba(255,255,255,0.92);
 }
 
 .hero-buttons{
   display:flex;
-  gap:18px;
-  justify-content:center;
+  gap:20px;
   flex-wrap:wrap;
+  align-items:center;
 }
 
 .btn{
-  padding:15px 34px;
-  border-radius:8px;
-  font-weight:600;
+  padding:18px 38px;
+  border-radius:10px;
+  font-weight:700;
   text-decoration:none;
-  transition:.25s;
+  transition:.3s;
+  font-size:16px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:2px solid transparent;
+  white-space:nowrap;
 }
 
-.btn-primary{background:var(--accent);color:white}
-.btn-secondary{background:white;color:var(--primary)}
+.btn-primary{
+  background:var(--accent);
+  color:var(--dark);
+  box-shadow:0 10px 25px rgba(245,158,11,0.3);
+}
 
-.btn:hover{
+.btn-primary:hover{
+  background:var(--accent-dark);
   transform:translateY(-3px);
-  box-shadow:0 10px 24px rgba(0,0,0,.25);
+  box-shadow:0 15px 35px rgba(245,158,11,0.4);
 }
 
-/* HERO DIVIDER */
-.hero-divider{
-  height:6px;
-  background:linear-gradient(to right,var(--accent),var(--primary));
+.btn-secondary{
+  background:rgba(255,255,255,0.95);
+  color:var(--primary);
+  border:2px solid rgba(255,255,255,0.2);
+}
+
+.btn-secondary:hover{
+  background:white;
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-xl);
+}
+
+.btn-ghost{
+  background:transparent;
+  color:white;
+  border:2px solid rgba(255,255,255,0.3);
+  padding:16px 32px;
+}
+
+.btn-ghost:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:rgba(255,255,255,0.5);
 }
 
 /* TRUST BAR */
 .trust{
-  background:var(--primary);
+  background:linear-gradient(135deg, #f59e0b, #d97706);
   color:white;
-  padding:34px 20px;
+  padding:48px 32px;
+  position:relative;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,0.1);
 }
 
 .trust-grid{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
   text-align:center;
 }
 
-.trust strong{font-size:26px}
+.trust-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.trust-item strong{
+  font-size:42px;
+  font-weight:900;
+  display:block;
+  letter-spacing:-1px;
+  text-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
+
+.trust-item span{
+  font-size:16px;
+  font-weight:600;
+  opacity:0.95;
+  letter-spacing:0.5px;
+}
+
+.trust-footer{
+  text-align:center;
+  margin-top:32px;
+  padding-top:32px;
+  border-top:1px solid rgba(255,255,255,0.2);
+  font-size:15px;
+  opacity:.95;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+.trust-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,0.15);
+  padding:6px 16px;
+  border-radius:20px;
+  font-weight:600;
+  font-size:13px;
+}
 
 /* SECTION BASE */
-section{padding:90px 20px}
-section:nth-of-type(even){background:#fafafa}
+section{padding:100px 32px}
+section:nth-of-type(even){background:#fafbfc}
 
-.container{max-width:1200px;margin:auto}
+.container{max-width:1280px;margin:auto}
 
-.section-title{text-align:center;margin-bottom:60px}
-.section-title h2{
-  font-size:38px;
-  letter-spacing:-0.4px;
-  margin-bottom:12px;
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
 }
-.section-title p{color:var(--muted);font-size:17px}
+
+.section-label{
+  display:inline-block;
+  background:rgba(245,158,11,0.1);
+  color:var(--accent-dark);
+  padding:6px 18px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:16px;
+}
+
+.section-title h2{
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-bottom:16px;
+  color:var(--primary);
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:19px;
+  line-height:1.7;
+}
 
 /* SERVICES */
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:35px;
+  gap:32px;
 }
 
 .service-card{
   background:white;
-  border-radius:14px;
-  padding:28px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  transition:.35s;
+  border-radius:16px;
+  padding:0;
+  box-shadow:var(--shadow);
+  transition:.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border:1px solid var(--border);
+  overflow:hidden;
+  position:relative;
+}
+
+.service-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-dark));
+  transform:scaleX(0);
+  transition:.4s;
+}
+
+.service-card:hover::before{
+  transform:scaleX(1);
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-xl);
+  border-color:rgba(245,158,11,0.3);
 }
 
 .service-card img{
   width:100%;
-  height:190px;
+  height:240px;
   object-fit:cover;
-  border-radius:10px;
-  margin-bottom:18px;
+  transition:.4s;
 }
 
-.service-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 22px 60px rgba(0,0,0,.18);
+.service-card:hover img{
+  transform:scale(1.05);
+}
+
+.service-content{
+  padding:32px;
+}
+
+.service-card h3{
+  font-size:24px;
+  font-weight:800;
+  margin-bottom:12px;
+  color:var(--primary);
+}
+
+.service-card p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.service-link{
+  color:var(--accent-dark);
+  font-weight:700;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:15px;
+  transition:.3s;
+}
+
+.service-link:hover{
+  gap:12px;
+  color:var(--accent);
+}
+
+/* STATS SECTION */
+.stats-section{
+  background:linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.stats-section::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  right:-10%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(245,158,11,0.15), transparent 70%);
+  border-radius:50%;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:50px;
+  position:relative;
+  z-index:2;
+}
+
+.stat-item{
+  text-align:center;
+}
+
+.stat-number{
+  font-size:56px;
+  font-weight:900;
+  color:var(--accent);
+  margin-bottom:8px;
+  display:block;
+  letter-spacing:-2px;
+}
+
+.stat-label{
+  font-size:18px;
+  opacity:0.9;
+  font-weight:600;
 }
 
 /* GALLERY */
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:28px;
+  gap:32px;
 }
 
 .gallery-item{
   background:white;
-  border-radius:16px;
+  border-radius:18px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-  transition:.35s;
+  box-shadow:var(--shadow);
+  transition:.4s;
+  border:1px solid var(--border);
+  position:relative;
 }
 
-.gallery-item:hover{transform:translateY(-8px)}
+.gallery-item:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-xl);
+}
+
+.gallery-img-wrap{
+  position:relative;
+  overflow:hidden;
+  height:280px;
+}
 
 .gallery-item img{
   width:100%;
-  height:240px;
+  height:100%;
   object-fit:cover;
+  transition:.5s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.08);
+}
+
+.gallery-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(to top, rgba(15,23,42,0.8), transparent);
+  opacity:0;
+  transition:.4s;
+  display:flex;
+  align-items:flex-end;
+  padding:24px;
+}
+
+.gallery-item:hover .gallery-overlay{
+  opacity:1;
 }
 
 .gallery-caption{
-  padding:18px 20px;
+  padding:24px;
+  font-weight:700;
+  font-size:17px;
+  color:var(--primary);
+}
+
+.gallery-location{
+  color:var(--muted);
+  font-size:14px;
   font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin-top:6px;
 }
 
 /* TESTIMONIALS */
 .testimonials{
-  background:linear-gradient(135deg,#0b5ed7,#084298);
+  background:
+    linear-gradient(135deg, rgba(15,23,42,0.97), rgba(30,41,59,0.95)),
+    url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2000&q=80");
+  background-size:cover;
+  background-position:center;
   color:white;
 }
 
 .test-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
+  gap:32px;
 }
 
 .test-card{
-  background:rgba(255,255,255,.12);
-  padding:28px;
-  border-radius:14px;
-  backdrop-filter:blur(6px);
+  background:rgba(255,255,255,0.08);
+  padding:36px;
+  border-radius:16px;
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.1);
+  transition:.4s;
+  position:relative;
+}
+
+.test-card::before{
+  content:""";
+  position:absolute;
+  top:16px;
+  left:24px;
+  font-size:80px;
+  color:rgba(245,158,11,0.2);
+  font-family:Georgia,serif;
+  line-height:1;
+}
+
+.test-card:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-4px);
+  border-color:rgba(245,158,11,0.3);
+}
+
+.test-stars{
+  color:var(--accent);
+  font-size:20px;
+  margin-bottom:20px;
+  letter-spacing:2px;
+}
+
+.test-content{
+  font-size:17px;
+  line-height:1.7;
+  margin-bottom:24px;
+  position:relative;
+  z-index:2;
+  opacity:0.95;
+}
+
+.test-author{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.test-avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent-dark));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:20px;
+  color:white;
+  flex-shrink:0;
+}
+
+.test-name{
+  font-weight:700;
+  font-size:16px;
+}
+
+.test-location{
+  font-size:14px;
+  opacity:0.8;
 }
 
 /* CONTACT */
 .contact-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
+  grid-template-columns:1fr 1.2fr;
+  gap:60px;
+  align-items:start;
+}
+
+.contact-info{
+  position:sticky;
+  top:100px;
+}
+
+.contact-info h3{
+  font-size:32px;
+  font-weight:800;
+  margin-bottom:24px;
+  color:var(--primary);
+}
+
+.contact-item{
+  display:flex;
+  align-items:start;
+  gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.contact-item:last-child{
+  border-bottom:none;
+}
+
+.contact-icon{
+  width:48px;
+  height:48px;
+  background:rgba(245,158,11,0.1);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  flex-shrink:0;
+}
+
+.contact-details strong{
+  display:block;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:4px;
+  font-size:15px;
+}
+
+.contact-details p{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+}
+
+.contact-details a{
+  color:var(--accent-dark);
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.contact-details a:hover{
+  color:var(--accent);
 }
 
 .contact-box{
   background:white;
-  padding:34px;
-  border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  padding:48px;
+  border-radius:20px;
+  box-shadow:var(--shadow-lg);
+  border:1px solid var(--border);
+}
+
+.form-group{
+  margin-bottom:24px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:700;
+  margin-bottom:8px;
+  color:var(--primary);
+  font-size:14px;
 }
 
 input,textarea{
   width:100%;
-  padding:14px;
-  margin-bottom:16px;
-  border-radius:8px;
-  border:1px solid var(--border);
+  padding:16px;
+  border-radius:10px;
+  border:2px solid var(--border);
+  font-family:inherit;
+  font-size:16px;
+  transition:.3s;
+  background:var(--light);
+}
+
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  background:white;
+  box-shadow:0 0 0 4px rgba(245,158,11,0.1);
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
 }
 
 button{
   width:100%;
-  padding:16px;
-  background:var(--primary);
-  color:white;
+  padding:18px;
+  background:var(--accent);
+  color:var(--dark);
   border:none;
-  border-radius:8px;
-  font-weight:700;
+  border-radius:10px;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+button:hover{
+  background:var(--accent-dark);
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(245,158,11,0.3);
+}
+
+.form-note{
+  margin-top:16px;
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* CERTIFICATIONS */
+.certifications{
+  background:var(--light);
+  padding:60px 32px;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.cert-grid{
+  max-width:1280px;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:50px;
+  flex-wrap:wrap;
+  opacity:0.7;
+  filter:grayscale(1);
+  transition:.4s;
+}
+
+.cert-grid:hover{
+  opacity:1;
+  filter:grayscale(0);
+}
+
+.cert-item{
+  font-size:48px;
+  transition:.3s;
+}
+
+.cert-item:hover{
+  transform:scale(1.1);
 }
 
 /* FOOTER */
 footer{
   background:var(--dark);
+  color:rgba(255,255,255,0.8);
+  padding:70px 32px 32px;
+}
+
+.footer-grid{
+  max-width:1280px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:50px;
+  margin-bottom:50px;
+}
+
+.footer-col h4{
   color:white;
-  padding:50px 20px;
+  font-weight:800;
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+.footer-col p{
+  line-height:1.8;
+  margin-bottom:20px;
+  opacity:0.9;
+}
+
+.footer-links{
+  list-style:none;
+}
+
+.footer-links li{
+  margin-bottom:12px;
+}
+
+.footer-links a{
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+  transition:.3s;
+  font-size:15px;
+}
+
+.footer-links a:hover{
+  color:var(--accent);
+  padding-left:4px;
+}
+
+.footer-bottom{
+  max-width:1280px;
+  margin:auto;
+  padding-top:32px;
+  border-top:1px solid rgba(255,255,255,0.1);
   text-align:center;
+  font-size:14px;
+  opacity:0.8;
+}
+
+.social-links{
+  display:flex;
+  gap:16px;
+  margin-top:20px;
+}
+
+.social-link{
+  width:40px;
+  height:40px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+  font-size:18px;
+}
+
+.social-link:hover{
+  background:var(--accent);
+  color:var(--dark);
+  transform:translateY(-3px);
+}
+
+/* CTA FLOAT */
+.float-cta{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:999;
+  animation:float 3s ease-in-out infinite;
+}
+
+.float-btn{
+  background:var(--accent);
+  color:var(--dark);
+  padding:16px 24px;
+  border-radius:50px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 10px 40px rgba(245,158,11,0.4);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:15px;
+  transition:.3s;
+  white-space:nowrap;
+}
+
+.float-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 50px rgba(245,158,11,0.5);
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
 /* ANIMATIONS */
 .fade-up{
   opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
+  transform:translateY(50px);
+  transition:opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-up.show{
   opacity:1;
-  transform:none;
+  transform:translateY(0);
 }
 
-/* MOBILE */
+/* TABLET BREAKPOINT - 1024px */
+@media(max-width:1024px){
+  .hero h1{
+    font-size:52px;
+  }
+  
+  .section-title h2{
+    font-size:42px;
+  }
+  
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  
+  .contact-info{
+    position:static;
+  }
+  
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  
+  .hamburger{
+    display:flex;
+  }
+  
+  .nav-links{
+    position:fixed;
+    top:80px;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(15,23,42,0.98);
+    backdrop-filter:blur(16px);
+    flex-direction:column;
+    padding:40px 32px;
+    gap:0;
+    transform:translateX(-100%);
+    opacity:0;
+    transition:.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:var(--shadow-lg);
+    overflow-y:auto;
+  }
+  
+  .nav-links.active{
+    transform:translateX(0);
+    opacity:1;
+  }
+  
+  .nav-links li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  
+  .nav-links a{
+    font-size:20px;
+    padding:20px 0;
+    width:100%;
+    display:block;
+  }
+  
+  .nav-cta{
+    width:100%;
+    text-align:center;
+    padding:18px 24px;
+    margin-top:16px;
+    font-size:18px;
+  }
+}
+
+/* MOBILE BREAKPOINT - 768px */
 @media(max-width:768px){
-  .hero h1{font-size:36px}
-  .contact-grid{grid-template-columns:1fr}
-  .nav-links{display:none}
+  .nav-wrap{
+    padding:0 20px;
+    height:70px;
+  }
+  
+  .logo{
+    font-size:22px;
+  }
+  
+  .logo::before{
+    font-size:28px;
+  }
+  
+  .hero{
+    padding:80px 20px 60px;
+  }
+  
+  .hero h1{
+    font-size:36px;
+    line-height:1.15;
+  }
+  
+  .hero p{
+    font-size:17px;
+    line-height:1.6;
+  }
+  
+  .hero-badge{
+    font-size:12px;
+    padding:6px 16px;
+  }
+  
+  .hero-buttons{
+    gap:12px;
+    flex-direction:column;
+    width:100%;
+  }
+  
+  .btn{
+    width:100%;
+    padding:16px 28px;
+    font-size:15px;
+  }
+  
+  .trust{
+    padding:40px 20px;
+  }
+  
+  .trust-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+  
+  .trust-item strong{
+    font-size:36px;
+  }
+  
+  .trust-item span{
+    font-size:14px;
+  }
+  
+  .trust-footer{
+    gap:12px;
+    margin-top:24px;
+    padding-top:24px;
+  }
+  
+  .trust-badge{
+    font-size:11px;
+    padding:5px 12px;
+  }
+  
+  section{
+    padding:60px 20px;
+  }
+  
+  .section-title{
+    margin-bottom:50px;
+  }
+  
+  .section-title h2{
+    font-size:32px;
+  }
+  
+  .section-title p{
+    font-size:16px;
+  }
+  
+  .section-label{
+    font-size:11px;
+    padding:5px 14px;
+  }
+  
+  .services-grid,
+  .gallery-grid,
+  .test-grid{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  
+  .service-content{
+    padding:24px;
+  }
+  
+  .service-card h3{
+    font-size:22px;
+  }
+  
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+  
+  .stat-number{
+    font-size:44px;
+  }
+  
+  .stat-label{
+    font-size:15px;
+  }
+  
+  .gallery-img-wrap{
+    height:220px;
+  }
+  
+  .test-card{
+    padding:28px;
+  }
+  
+  .test-content{
+    font-size:15px;
+  }
+  
+  .contact-box{
+    padding:32px 24px;
+  }
+  
+  .contact-info h3{
+    font-size:28px;
+  }
+  
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  
+  .certifications{
+    padding:40px 20px;
+  }
+  
+  .cert-grid{
+    gap:30px;
+  }
+  
+  .cert-item{
+    font-size:40px;
+  }
+  
+  .float-cta{
+    bottom:16px;
+    right:16px;
+  }
+  
+  .float-btn{
+    padding:14px 20px;
+    font-size:13px;
+    gap:6px;
+  }
+}
+
+/* SMALL MOBILE BREAKPOINT - 480px */
+@media(max-width:480px){
+  .logo{
+    font-size:19px;
+  }
+  
+  .logo::before{
+    font-size:24px;
+  }
+  
+  .hero{
+    padding:60px 16px 50px;
+  }
+  
+  .hero h1{
+    font-size:28px;
+    letter-spacing:-0.5px;
+  }
+  
+  .hero p{
+    font-size:16px;
+  }
+  
+  .btn{
+    padding:14px 24px;
+    font-size:14px;
+  }
+  
+  .trust{
+    padding:32px 16px;
+  }
+  
+  .trust-grid{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  
+  .trust-item strong{
+    font-size:32px;
+  }
+  
+  .trust-footer{
+    flex-direction:column;
+    gap:8px;
+  }
+  
+  section{
+    padding:50px 16px;
+  }
+  
+  .section-title h2{
+    font-size:28px;
+  }
+  
+  .section-title p{
+    font-size:15px;
+  }
+  
+  .services-grid,
+  .gallery-grid,
+  .test-grid{
+    gap:20px;
+  }
+  
+  .service-content,
+  .gallery-caption{
+    padding:20px;
+  }
+  
+  .service-card img,
+  .gallery-img-wrap{
+    height:200px;
+  }
+  
+  .stats-grid{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  
+  .stat-number{
+    font-size:40px;
+  }
+  
+  .test-card{
+    padding:24px;
+  }
+  
+  .test-card::before{
+    font-size:60px;
+  }
+  
+  .contact-box{
+    padding:24px 20px;
+  }
+  
+  .contact-info h3{
+    font-size:24px;
+  }
+  
+  .contact-icon{
+    width:44px;
+    height:44px;
+    font-size:20px;
+  }
+  
+  input,textarea{
+    font-size:16px;
+    padding:14px;
+  }
+  
+  button{
+    padding:16px;
+    font-size:15px;
+  }
+  
+  .float-btn{
+    padding:12px 16px;
+    font-size:12px;
+  }
+  
+  .cert-grid{
+    gap:24px;
+  }
+  
+  .cert-item{
+    font-size:36px;
+  }
+  
+  footer{
+    padding:50px 16px 24px;
+  }
+}
+
+/* EXTRA SMALL - 320px */
+@media(max-width:360px){
+  .nav-wrap{
+    padding:0 16px;
+  }
+  
+  .hero h1{
+    font-size:24px;
+  }
+  
+  .section-title h2{
+    font-size:24px;
+  }
+  
+  .trust-item strong{
+    font-size:28px;
+  }
+  
+  .stat-number{
+    font-size:36px;
+  }
 }
 </style>
 </head>
@@ -307,58 +1411,120 @@ footer{
 <nav>
   <div class="nav-wrap">
     <a href="#top" class="logo">Elite Roofing</a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
-      <li><a href="#gallery">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#gallery">Projects</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Free Quote</a></li>
     </ul>
   </div>
 </nav>
 
-<section class="hero fade-up">
-  <h1>Roofing Done Right. Built to Last.</h1>
-  <p>Professional roof repairs, replacements, and inspections by licensed experts trusted across the Houston area.</p>
-  <div class="hero-buttons">
-    <a href="#contact" class="btn btn-primary">Get Free Quote</a>
-    <a href="tel:5551234567" class="btn btn-secondary">Call Now</a>
+<section class="hero">
+  <div class="hero-content fade-up">
+    <div class="hero-badge">
+      <span>⚡</span> Trusted Since 2004 • Licensed & Insured
+    </div>
+    <h1>Roofing Excellence.<br><span>Built to Last.</span></h1>
+    <p>Premium roof repairs, replacements, and inspections by certified experts. Protecting Houston homes and businesses with unmatched craftsmanship and lifetime warranties.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">Get Free Inspection →</a>
+      <a href="tel:5551234567" class="btn btn-secondary">📞 (555) 123-4567</a>
+      <a href="#gallery" class="btn btn-ghost">View Our Work</a>
+    </div>
   </div>
 </section>
 
-<div class="hero-divider"></div>
-
 <div class="trust">
   <div class="trust-grid fade-up">
-    <div><strong>20+</strong><br>Years Experience</div>
-    <div><strong>4.9★</strong><br>Google Rating</div>
-    <div><strong>24/7</strong><br>Emergency Service</div>
-    <div><strong>Licensed</strong><br>& Insured</div>
+    <div class="trust-item">
+      <strong>20+</strong>
+      <span>Years Experience</span>
+    </div>
+    <div class="trust-item">
+      <strong>4.9★</strong>
+      <span>Google Rating</span>
+    </div>
+    <div class="trust-item">
+      <strong>24/7</strong>
+      <span>Emergency Service</span>
+    </div>
+    <div class="trust-item">
+      <strong>5,000+</strong>
+      <span>Projects Done</span>
+    </div>
   </div>
-  <p style="text-align:center;margin-top:20px;font-size:14px;opacity:.9">
-    BBB Accredited • Free Inspections • Warranty Backed Work
-  </p>
+  <div class="trust-footer">
+    <span class="trust-badge">✓ BBB A+ Accredited</span>
+    <span class="trust-badge">✓ 50-Year Warranty</span>
+    <span class="trust-badge">✓ Free Inspections</span>
+    <span class="trust-badge">✓ Financing Available</span>
+  </div>
 </div>
 
 <section id="services">
   <div class="container">
     <div class="section-title fade-up">
-      <h2>Our Roofing Services</h2>
-      <p>Quality workmanship for residential and commercial properties</p>
+      <span class="section-label">Our Services</span>
+      <h2>Premium Roofing Solutions</h2>
+      <p>Comprehensive roofing services for residential and commercial properties backed by industry-leading warranties</p>
     </div>
     <div class="services-grid">
       <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80">
-        <h3>Roof Replacement</h3>
-        <p>Complete tear-offs and replacements using premium, warranty-backed materials.</p>
+        <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80" alt="Roof Replacement">
+        <div class="service-content">
+          <h3>Roof Replacement</h3>
+          <p>Complete tear-offs and installations using premium, warranty-backed materials. Our expert team ensures flawless execution from start to finish.</p>
+          <a href="#contact" class="service-link">Get Quote →</a>
+        </div>
       </div>
       <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695c95295?auto=format&fit=crop&w=800&q=80">
-        <h3>Commercial Roofing</h3>
-        <p>Flat roof systems, coatings, and long-term commercial solutions.</p>
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Commercial Roofing">
+        <div class="service-content">
+          <h3>Commercial Roofing</h3>
+          <p>Advanced flat roof systems, protective coatings, and long-term commercial solutions designed for maximum durability and ROI.</p>
+          <a href="#contact" class="service-link">Learn More →</a>
+        </div>
       </div>
       <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80">
-        <h3>Metal Roof Systems</h3>
-        <p>High-performance standing seam metal roofs built for longevity.</p>
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80" alt="Metal Roofing">
+        <div class="service-content">
+          <h3>Metal Roof Systems</h3>
+          <p>High-performance standing seam metal roofs engineered for 50+ year longevity with superior weather resistance.</p>
+          <a href="#contact" class="service-link">Explore Options →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="section-title fade-up">
+      <h2 style="color:white">Why Houston Chooses Elite</h2>
+      <p style="color:rgba(255,255,255,0.85)">Numbers that speak to our commitment to excellence</p>
+    </div>
+    <div class="stats-grid fade-up">
+      <div class="stat-item">
+        <span class="stat-number">5,000+</span>
+        <span class="stat-label">Roofs Installed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Customer Satisfaction</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Emergency Response</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">50-Yr</span>
+        <span class="stat-label">Warranty Coverage</span>
       </div>
     </div>
   </div>
@@ -367,51 +1533,297 @@ footer{
 <section id="gallery">
   <div class="container">
     <div class="section-title fade-up">
-      <h2>Our Recent Work</h2>
-      <p>Completed projects across residential and commercial properties</p>
+      <span class="section-label">Portfolio</span>
+      <h2>Recent Projects</h2>
+      <p>Explore our completed work across Houston's finest residential and commercial properties</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80">
-        <div class="gallery-caption">Residential Roof Replacement</div>
+        <div class="gallery-img-wrap">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80" alt="Residential Roof">
+          <div class="gallery-overlay">
+            <div style="color:white">
+              <strong style="display:block;font-size:18px;margin-bottom:4px">Modern Residential</strong>
+              <span style="opacity:0.9">Architectural Shingles • 2-Day Install</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          Luxury Home Roof Replacement
+          <div class="gallery-location">📍 Memorial, Houston</div>
+        </div>
       </div>
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1581578731548-c64695c95295?auto=format&fit=crop&w=900&q=80">
-        <div class="gallery-caption">Commercial Flat Roofing</div>
+        <div class="gallery-img-wrap">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="Commercial Roof">
+          <div class="gallery-overlay">
+            <div style="color:white">
+              <strong style="display:block;font-size:18px;margin-bottom:4px">Commercial Complex</strong>
+              <span style="opacity:0.9">TPO System • 30,000 sq ft</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          Commercial Flat Roofing System
+          <div class="gallery-location">📍 Galleria Area</div>
+        </div>
       </div>
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=80">
-        <div class="gallery-caption">Metal Roofing Installation</div>
+        <div class="gallery-img-wrap">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=80" alt="Metal Roof">
+          <div class="gallery-overlay">
+            <div style="color:white">
+              <strong style="display:block;font-size:18px;margin-bottom:4px">Standing Seam Metal</strong>
+              <span style="opacity:0.9">Premium Finish • Storm Rated</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          Premium Metal Roof Installation
+          <div class="gallery-location">📍 The Heights</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="testimonials testimonials fade-up">
+<section class="testimonials" id="testimonials">
   <div class="container">
-    <div class="section-title">
-      <h2>What Our Customers Say</h2>
+    <div class="section-title fade-up">
+      <span class="section-label" style="background:rgba(245,158,11,0.2);color:var(--accent)">Testimonials</span>
+      <h2 style="color:white">What Our Customers Say</h2>
+      <p style="color:rgba(255,255,255,0.85)">Real reviews from satisfied homeowners and business owners</p>
     </div>
     <div class="test-grid">
-      <div class="test-card">⭐⭐⭐⭐⭐<br>“Professional, honest, and fast. Highly recommended.”</div>
-      <div class="test-card">⭐⭐⭐⭐⭐<br>“Great communication and quality craftsmanship.”</div>
-      <div class="test-card">⭐⭐⭐⭐⭐<br>“Best roofing company we’ve worked with.”</div>
+      <div class="test-card fade-up">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-content">"Absolutely phenomenal service from start to finish. The crew was professional, efficient, and left our property spotless. Our new roof looks incredible and we have complete peace of mind with the 50-year warranty."</p>
+        <div class="test-author">
+          <div class="test-avatar">JM</div>
+          <div>
+            <div class="test-name">Jennifer Martinez</div>
+            <div class="test-location">Katy, TX</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card fade-up">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-content">"Elite Roofing handled our commercial property with expertise and professionalism. Project completed on time, within budget, and exceeded our expectations. Highly recommend for any commercial roofing needs."</p>
+        <div class="test-author">
+          <div class="test-avatar">RC</div>
+          <div>
+            <div class="test-name">Robert Chen</div>
+            <div class="test-location">Sugar Land, TX</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card fade-up">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-content">"Best roofing company in Houston, hands down. Transparent pricing, expert guidance on material selection, and impeccable installation. They truly stand behind their work and treated our home with care."</p>
+        <div class="test-author">
+          <div class="test-avatar">SM</div>
+          <div>
+            <div class="test-name">Sarah Miller</div>
+            <div class="test-location">Pearland, TX</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="certifications">
+  <div class="cert-grid fade-up">
+    <div class="cert-item" title="BBB Accredited">🛡️</div>
+    <div class="cert-item" title="GAF Master Elite">⭐</div>
+    <div class="cert-item" title="Owens Corning Preferred">🏆</div>
+    <div class="cert-item" title="CertainTeed SELECT">✓</div>
+    <div class="cert-item" title="Fully Insured">🔒</div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
     <div class="section-title fade-up">
-      <h2>Request a Free Quote</h2>
-      <p>Speak with a roofing specialist today</p>
+      <span class="section-label">Get Started</span>
+      <h2>Request Your Free Inspection</h2>
+      <p>Connect with our roofing specialists for a comprehensive assessment and no-obligation quote</p>
     </div>
     <div class="contact-grid">
-      <div class="fade-up">
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> info@eliteroofing.com</p>
-        <p><strong>Service Area:</strong> Houston & surrounding areas</p>
+      <div class="contact-info fade-up">
+        <h3>Let's Discuss Your Project</h3>
+        <p style="color:var(--muted);margin-bottom:32px">We're here to answer questions and provide expert guidance on your roofing needs. Reach out today for a free consultation.</p>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-details">
+            <strong>Call or Text</strong>
+            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-details">
+            <strong>Email Us</strong>
+            <p><a href="mailto:info@eliteroofing.com">info@eliteroofing.com</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <strong>Service Area</strong>
+            <p>Houston & surrounding areas<br>50-mile radius</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div class="contact-details">
+            <strong>Business Hours</strong>
+            <p>Mon-Fri: 7am - 7pm<br>Sat-Sun: 8am - 5pm<br>Emergency: 24/7</p>
+          </div>
+        </div>
       </div>
+      
       <div class="contact-box fade-up">
         <form>
-          <input placeholder="Your Name" required>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="(555) 123-4567" required>
+          </div>
+          <div class="form-group">
+            <label>Project Details</label>
+            <textarea placeholder="Tell us about your roofing needs, property type, and any specific concerns..."></textarea>
+          </div>
+          <button type="submit">Get My Free Inspection</button>
+          <p class="form-note">🔒 Your information is secure and will never be shared</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 style="color:var(--accent);font-size:24px;margin-bottom:16px">Elite Roofing</h4>
+      <p>Houston's premier roofing contractor providing exceptional service and craftsmanship since 2004. Licensed, insured, and committed to excellence.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Roof Replacement</a></li>
+        <li><a href="#services">Roof Repair</a></li>
+        <li><a href="#services">Commercial Roofing</a></li>
+        <li><a href="#services">Metal Roofing</a></li>
+        <li><a href="#services">Emergency Service</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Portfolio</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#careers">Careers</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul class="footer-links">
+        <li><a href="#blog">Roofing Guide</a></li>
+        <li><a href="#financing">Financing Options</a></li>
+        <li><a href="#warranty">Warranty Info</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#insurance">Insurance Claims</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2026 Elite Roofing. All Rights Reserved. | Licensed & Insured | TX License #123456</p>
+    <p style="margin-top:8px;opacity:0.6">Privacy Policy • Terms of Service • Sitemap</p>
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="tel:5551234567" class="float-btn">
+    📞 Call Now - Free Quote
+  </a>
+</div>
+
+<script>
+// Intersection Observer for fade animations
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    e.preventDefault();
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      // Close mobile menu if open
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+});
+
+// Hamburger menu functionality
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+  }
+});
+
+// Prevent body scroll when menu is open on mobile
+navLinks.addEventListener('transitionend', () => {
+  if (navLinks.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
+</body>
+</html>
