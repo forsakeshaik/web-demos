@@ -11,7 +11,7 @@
   --accent:#ff6b35;
   --dark:#1a2332;
   --light:#f8f9fa;
-  --text:#333;
+  --text:#222;
   --muted:#666;
   --border:#e5e5e5;
 }
@@ -21,10 +21,11 @@
 body{
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   color:var(--text);
-  line-height:1.6;
+  line-height:1.75;
+  background:#fff;
 }
 
-img{background:#eee}
+img{background:linear-gradient(135deg,#f2f2f2,#e6e6e6)}
 
 /* NAV */
 nav{
@@ -37,24 +38,25 @@ nav{
 .nav-wrap{
   max-width:1200px;
   margin:auto;
-  padding:0 20px;
-  height:70px;
+  padding:0 24px;
+  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
 .logo{
-  font-size:26px;
-  font-weight:700;
+  font-size:28px;
+  font-weight:800;
   color:#00d4ff;
   text-decoration:none;
+  letter-spacing:-0.5px;
 }
 
 .nav-links{
   list-style:none;
   display:flex;
-  gap:30px;
+  gap:32px;
 }
 
 .nav-links a{
@@ -80,28 +82,38 @@ nav{
 /* HERO */
 .hero{
   background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80");
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1800&q=80");
   background-size:cover;
   background-position:center;
   color:white;
   text-align:center;
-  padding:100px 20px;
+  padding:110px 20px;
 }
 
-.hero h1{font-size:48px;margin-bottom:15px}
-.hero p{font-size:18px;max-width:700px;margin:0 auto 30px}
+.hero h1{
+  font-size:56px;
+  letter-spacing:-0.6px;
+  margin-bottom:18px;
+}
+
+.hero p{
+  font-size:19px;
+  max-width:720px;
+  margin:0 auto 34px;
+  opacity:.95;
+}
 
 .hero-buttons{
   display:flex;
-  gap:15px;
+  gap:18px;
   justify-content:center;
   flex-wrap:wrap;
 }
 
 .btn{
-  padding:14px 30px;
-  border-radius:6px;
+  padding:15px 34px;
+  border-radius:8px;
   font-weight:600;
   text-decoration:none;
   transition:.25s;
@@ -112,74 +124,91 @@ nav{
 
 .btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
 }
 
-/* TRUST */
+/* HERO DIVIDER */
+.hero-divider{
+  height:6px;
+  background:linear-gradient(to right,var(--accent),var(--primary));
+}
+
+/* TRUST BAR */
 .trust{
   background:var(--primary);
   color:white;
-  padding:30px 20px;
+  padding:34px 20px;
 }
 
 .trust-grid{
   max-width:1200px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
   text-align:center;
 }
 
-.trust strong{font-size:24px}
+.trust strong{font-size:26px}
 
-/* SECTIONS */
-section{padding:80px 20px}
+/* SECTION BASE */
+section{padding:90px 20px}
+section:nth-of-type(even){background:#fafafa}
+
 .container{max-width:1200px;margin:auto}
 
-.section-title{text-align:center;margin-bottom:50px}
-.section-title h2{font-size:36px;margin-bottom:10px}
-.section-title p{color:var(--muted)}
+.section-title{text-align:center;margin-bottom:60px}
+.section-title h2{
+  font-size:38px;
+  letter-spacing:-0.4px;
+  margin-bottom:12px;
+}
+.section-title p{color:var(--muted);font-size:17px}
 
 /* SERVICES */
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:35px;
 }
 
 .service-card{
   background:white;
-  border-radius:10px;
-  padding:35px;
-  text-align:center;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-  transition:.3s;
+  border-radius:14px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:.35s;
 }
 
-.service-card img{width:64px;margin-bottom:15px}
+.service-card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:18px;
+}
 
 .service-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  transform:translateY(-10px);
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
 }
 
 /* GALLERY */
 .gallery-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
 }
 
 .gallery-item{
   background:white;
-  border-radius:10px;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
-  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  transition:.35s;
 }
 
-.gallery-item:hover{transform:translateY(-6px)}
+.gallery-item:hover{transform:translateY(-8px)}
 
 .gallery-item img{
   width:100%;
@@ -187,7 +216,10 @@ section{padding:80px 20px}
   object-fit:cover;
 }
 
-.gallery-caption{padding:15px}
+.gallery-caption{
+  padding:18px 20px;
+  font-weight:600;
+}
 
 /* TESTIMONIALS */
 .testimonials{
@@ -197,61 +229,62 @@ section{padding:80px 20px}
 
 .test-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
 }
 
 .test-card{
   background:rgba(255,255,255,.12);
-  padding:25px;
-  border-radius:10px;
+  padding:28px;
+  border-radius:14px;
+  backdrop-filter:blur(6px);
 }
 
 /* CONTACT */
 .contact-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:40px;
+  gap:50px;
 }
 
 .contact-box{
   background:white;
-  padding:30px;
-  border-radius:10px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  padding:34px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
 
 input,textarea{
   width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:6px;
+  padding:14px;
+  margin-bottom:16px;
+  border-radius:8px;
   border:1px solid var(--border);
 }
 
 button{
   width:100%;
-  padding:14px;
+  padding:16px;
   background:var(--primary);
   color:white;
   border:none;
-  border-radius:6px;
-  font-weight:600;
+  border-radius:8px;
+  font-weight:700;
 }
 
 /* FOOTER */
 footer{
   background:var(--dark);
   color:white;
-  padding:40px 20px;
+  padding:50px 20px;
   text-align:center;
 }
 
 /* ANIMATIONS */
 .fade-up{
   opacity:0;
-  transform:translateY(30px);
-  transition:.7s ease;
+  transform:translateY(40px);
+  transition:.8s ease;
 }
 
 .fade-up.show{
@@ -261,7 +294,7 @@ footer{
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1{font-size:34px}
+  .hero h1{font-size:36px}
   .contact-grid{grid-template-columns:1fr}
   .nav-links{display:none}
 }
@@ -283,44 +316,49 @@ footer{
 </nav>
 
 <section class="hero fade-up">
-  <h1>Reliable Roofing Services You Can Trust</h1>
-  <p>Roof repairs, replacements, and inspections by licensed professionals.</p>
+  <h1>Roofing Done Right. Built to Last.</h1>
+  <p>Professional roof repairs, replacements, and inspections by licensed experts trusted across the Houston area.</p>
   <div class="hero-buttons">
     <a href="#contact" class="btn btn-primary">Get Free Quote</a>
     <a href="tel:5551234567" class="btn btn-secondary">Call Now</a>
   </div>
 </section>
 
+<div class="hero-divider"></div>
+
 <div class="trust">
   <div class="trust-grid fade-up">
     <div><strong>20+</strong><br>Years Experience</div>
-    <div><strong>4.9★</strong><br>Customer Rating</div>
+    <div><strong>4.9★</strong><br>Google Rating</div>
     <div><strong>24/7</strong><br>Emergency Service</div>
     <div><strong>Licensed</strong><br>& Insured</div>
   </div>
+  <p style="text-align:center;margin-top:20px;font-size:14px;opacity:.9">
+    BBB Accredited • Free Inspections • Warranty Backed Work
+  </p>
 </div>
 
 <section id="services">
   <div class="container">
     <div class="section-title fade-up">
-      <h2>Our Services</h2>
-      <p>Complete roofing solutions</p>
+      <h2>Our Roofing Services</h2>
+      <p>Quality workmanship for residential and commercial properties</p>
     </div>
     <div class="services-grid">
       <div class="service-card fade-up">
-        <img src="https://img.icons8.com/fluency/96/roofing.png">
+        <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80">
         <h3>Roof Replacement</h3>
-        <p>High-quality materials and expert installation.</p>
+        <p>Complete tear-offs and replacements using premium, warranty-backed materials.</p>
       </div>
       <div class="service-card fade-up">
-        <img src="https://img.icons8.com/fluency/96/maintenance.png">
-        <h3>Roof Repair</h3>
-        <p>Fast fixes for leaks and storm damage.</p>
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695c95295?auto=format&fit=crop&w=800&q=80">
+        <h3>Commercial Roofing</h3>
+        <p>Flat roof systems, coatings, and long-term commercial solutions.</p>
       </div>
       <div class="service-card fade-up">
-        <img src="https://img.icons8.com/fluency/96/inspection.png">
-        <h3>Inspections</h3>
-        <p>Honest assessments and preventive care.</p>
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80">
+        <h3>Metal Roof Systems</h3>
+        <p>High-performance standing seam metal roofs built for longevity.</p>
       </div>
     </div>
   </div>
@@ -329,35 +367,35 @@ footer{
 <section id="gallery">
   <div class="container">
     <div class="section-title fade-up">
-      <h2>Our Work</h2>
-      <p>Recent projects</p>
+      <h2>Our Recent Work</h2>
+      <p>Completed projects across residential and commercial properties</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80">
-        <div class="gallery-caption"><h3>Residential Replacement</h3></div>
+        <img loading="lazy" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80">
+        <div class="gallery-caption">Residential Roof Replacement</div>
       </div>
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1597008641621-6c6c3c9f8f8c?auto=format&fit=crop&w=800&q=80">
-        <div class="gallery-caption"><h3>Commercial Roofing</h3></div>
+        <img loading="lazy" src="https://images.unsplash.com/photo-1581578731548-c64695c95295?auto=format&fit=crop&w=900&q=80">
+        <div class="gallery-caption">Commercial Flat Roofing</div>
       </div>
       <div class="gallery-item fade-up">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80">
-        <div class="gallery-caption"><h3>Metal Roof System</h3></div>
+        <img loading="lazy" src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=80">
+        <div class="gallery-caption">Metal Roofing Installation</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials testimonials fade-up">
   <div class="container">
-    <div class="section-title fade-up">
-      <h2>Customer Reviews</h2>
+    <div class="section-title">
+      <h2>What Our Customers Say</h2>
     </div>
     <div class="test-grid">
-      <div class="test-card fade-up">⭐⭐⭐⭐⭐<br>“Fast, professional, and honest.”</div>
-      <div class="test-card fade-up">⭐⭐⭐⭐⭐<br>“Great communication and quality.”</div>
-      <div class="test-card fade-up">⭐⭐⭐⭐⭐<br>“Would hire again.”</div>
+      <div class="test-card">⭐⭐⭐⭐⭐<br>“Professional, honest, and fast. Highly recommended.”</div>
+      <div class="test-card">⭐⭐⭐⭐⭐<br>“Great communication and quality craftsmanship.”</div>
+      <div class="test-card">⭐⭐⭐⭐⭐<br>“Best roofing company we’ve worked with.”</div>
     </div>
   </div>
 </section>
@@ -366,6 +404,7 @@ footer{
   <div class="container">
     <div class="section-title fade-up">
       <h2>Request a Free Quote</h2>
+      <p>Speak with a roofing specialist today</p>
     </div>
     <div class="contact-grid">
       <div class="fade-up">
@@ -376,31 +415,3 @@ footer{
       <div class="contact-box fade-up">
         <form>
           <input placeholder="Your Name" required>
-          <input placeholder="Email" required>
-          <input placeholder="Phone" required>
-          <textarea placeholder="How can we help?"></textarea>
-          <button>Get Quote</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2024 Elite Roofing • Licensed & Insured
-</footer>
-
-<script>
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-},{threshold:0.15});
-
-document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>
